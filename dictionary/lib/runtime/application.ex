@@ -9,8 +9,8 @@ defmodule Dictionary.Runtime.Application do
 
     options = [
       name: Dictionary.Runtime.Supervisor,
-      strategy: :one_for_one,
       ## What strategy should be done with other process when this process stops
+      strategy: :one_for_one,
     ]
 
     Supervisor.start_link(children, options)
