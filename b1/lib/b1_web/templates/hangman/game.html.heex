@@ -1,12 +1,13 @@
-This is the game
+<div id="game" class="row">
 
-<p> Turns left: <%= @tally.turns_left %> </p>
-<p> Turns used: <%= @tally.used |> Enum.join(", ")%> </p>
-<p> Words so far: <%= @tally.letters |> Enum.join(" _ ")%> </p>
+    <div class="column">
+        <pre> <%= figure_for(@tally.turns_left) %> </pre>
+    </div>
 
+    <div class="column">
+        <%= render("_tally_info.html", tally: @tally) %>
+        <%= move_status(@tally.game_state) |> raw %>
+        <%= continue_or_try_again(@conn, @tally.game_state) %>
+    </div>
 
-
-<%= form_for(@conn, Routes.hangman_path(@conn, :update), [ as: "make_move", method: :put ], fn f ->  %>
-<%= text_input(f, :guess) %>
-<%= submit("Make next guess") %>
-<%= end) %>
+</div>
