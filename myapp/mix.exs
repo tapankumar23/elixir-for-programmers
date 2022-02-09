@@ -1,9 +1,9 @@
-defmodule Hangman.MixProject do
+defmodule Myapp.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :hangman,
+      app: :myapp,
       version: "0.1.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
@@ -14,8 +14,8 @@ defmodule Hangman.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: { Hangman.Runtime.Application, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {Myapp.Application, []}
     ]
   end
 
@@ -24,9 +24,6 @@ defmodule Hangman.MixProject do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-      {:dictionary, path: "../dictionary"},
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-      {:inflex, "~> 2.1", only: [:dev], runtime: false},
     ]
   end
 end
